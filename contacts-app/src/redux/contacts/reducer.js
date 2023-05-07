@@ -10,7 +10,7 @@ export const reducer=(state=initState,{type,payload})=>{
     switch(type){
         case GET_CONTACT_LOADING:{
             return {
-                ...state,loading:true,error
+                ...state,loading:true,error:false
             }
         }
         case GET_CONTACT_SUCCESS:{
@@ -70,15 +70,19 @@ return{
         }
 
         case DELETE_CONTACT_SUCCESS:{
+          
 let dataAfterDeletion= state.data.filter(el=>{
+   
     if(el._id!==payload){
+    
         return el
     }
+})
 
     return{
         ...state,loading:false,error:false,data:dataAfterDeletion
     }
-})
+
 
 
         }
